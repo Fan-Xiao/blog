@@ -5631,3 +5631,16 @@ blockquote.pullquote.right {
     max-height: 75vh !important;
   }
 }
+body,
+.recent-post-item {
+  background: rgba(255,255,255,0.82) !important;
+}
+.card-widget {
+  background: rgba(255,255,255,0.82) !important;
+}
+#post {
+  background: rgba(255,255,255,0.82) !important;
+}
+#page {
+  background: rgba(255,255,255,0.82) !important;
+}
