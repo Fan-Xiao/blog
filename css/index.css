@@ -2282,6 +2282,7 @@ figure.highlight pre .javascript .function {
   align-items: center;
   overflow: hidden;
   height: 18em;
+  background: rgba(255,255,255,0.82);
 }
 @media screen and (max-width: 768px) {
   #recent-posts > .recent-post-item {
@@ -5284,6 +5285,9 @@ blockquote.pullquote.right {
     background: #1f1f1f;
   }
 }
+[data-theme='dark'] .recent-post-item {
+  background: rgba(18,18,18,0.82) !important;
+}
 .read-mode {
   --font-color: #4c4948;
   --readmode-light-color: #fff;
@@ -5631,16 +5635,18 @@ blockquote.pullquote.right {
     max-height: 75vh !important;
   }
 }
-body,
-.recent-post-item {
-  background: rgba(255,255,255,0.82) !important;
-}
 .card-widget {
-  background: rgba(255,255,255,0.82) !important;
+  opacity: 0.88;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=88)";
+  filter: alpha(opacity=88);
 }
 #post {
-  background: rgba(255,255,255,0.82) !important;
+  opacity: 0.88;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=88)";
+  filter: alpha(opacity=88);
 }
 #page {
-  background: rgba(255,255,255,0.82) !important;
+  opacity: 0.88;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=88)";
+  filter: alpha(opacity=88);
 }
