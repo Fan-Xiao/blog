@@ -2001,6 +2001,9 @@ figure.highlight pre .javascript .function {
   flex: 1;
   padding: 0 16px;
 }
+#archive {
+  background: rgba(255,255,255,0.82);
+}
 .category-lists .category-title {
   font-size: 2.57em;
 }
@@ -5287,6 +5290,9 @@ blockquote.pullquote.right {
 }
 [data-theme='dark'] .recent-post-item {
   background: rgba(18,18,18,0.82) !important;
+}
+[data-theme='dark'] #archive {
+  background: rgba(18,18,18,0.82);
 }
 .read-mode {
   --font-color: #4c4948;
