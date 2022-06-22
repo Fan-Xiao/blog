@@ -5294,6 +5294,9 @@ blockquote.pullquote.right {
 [data-theme='dark'] #archive {
   background: rgba(18,18,18,0.82);
 }
+[data-theme='dark'] #page {
+  background: rgba(18,18,18,0.82);
+}
 .read-mode {
   --font-color: #4c4948;
   --readmode-light-color: #fff;
@@ -5652,7 +5655,5 @@ blockquote.pullquote.right {
   filter: alpha(opacity=88);
 }
 #page {
-  opacity: 0.88;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=88)";
-  filter: alpha(opacity=88);
+  background: rgba(255,255,255,0.82);
 }
