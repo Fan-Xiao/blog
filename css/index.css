@@ -2900,6 +2900,9 @@ h1.page-title + .tag-cloud-list {
   -ms-flex-direction: column;
   flex-direction: column;
 }
+.card-widget {
+  background: rgba(255,255,255,0.82) !important;
+}
 @-moz-keyframes more-btn-move {
   0%, 100% {
     -webkit-transform: translateX(0);
@@ -5297,6 +5300,9 @@ blockquote.pullquote.right {
 [data-theme='dark'] #page {
   background: rgba(18,18,18,0.82);
 }
+[data-theme='dark'] .card-widget {
+  background: rgba(18,18,18,0.82) !important;
+}
 .read-mode {
   --font-color: #4c4948;
   --readmode-light-color: #fff;
@@ -5643,11 +5649,6 @@ blockquote.pullquote.right {
     padding-bottom: 40px;
     max-height: 75vh !important;
   }
-}
-.card-widget {
-  opacity: 0.88;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=88)";
-  filter: alpha(opacity=88);
 }
 #post {
   opacity: 0.88;
