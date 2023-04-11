@@ -1,0 +1,824 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>人工智能设计的数据库 | 小黄同学</title><meta name="keywords" content="SQL,ChatGPT,OpenAI"><meta name="author" content="小黄同学"><meta name="copyright" content="小黄同学"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据库模型设计 这是一个家具售后维修管理系统，以下是他需要的功能：1.顾客登录，使用手机号和密码2.企业登录，使用账号和密码3.企业账号可以管理顾客信息4.企业可以录入已售出商品订单（每个商品订单有一张商品图信息）并且可以管理订单5.顾客可以查看已购买商品的订单并且对需要维修售后的商品提交售后申请（售后维修申请能够提交图片详情）6.商家能够处理售后申请，然后反馈给客户解决方案和处理进度7.拥有一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能设计的数据库">
+<meta property="og:url" content="https://www.hxiyc.top/2023/04/11/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="小黄同学">
+<meta property="og:description" content="数据库模型设计 这是一个家具售后维修管理系统，以下是他需要的功能：1.顾客登录，使用手机号和密码2.企业登录，使用账号和密码3.企业账号可以管理顾客信息4.企业可以录入已售出商品订单（每个商品订单有一张商品图信息）并且可以管理订单5.顾客可以查看已购买商品的订单并且对需要维修售后的商品提交售后申请（售后维修申请能够提交图片详情）6.商家能够处理售后申请，然后反馈给客户解决方案和处理进度7.拥有一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.hxiyc.top/assets/OpenAI.png">
+<meta property="article:published_time" content="2023-04-11T14:17:35.476Z">
+<meta property="article:modified_time" content="2023-04-11T14:21:29.274Z">
+<meta property="article:author" content="小黄同学">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="ChatGPT">
+<meta property="article:tag" content="OpenAI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.hxiyc.top/assets/OpenAI.png"><link rel="shortcut icon" href="/img/me.png"><link rel="canonical" href="https://www.hxiyc.top/2023/04/11/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 小黄同学","link":"链接: ","source":"来源: 小黄同学","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '人工智能设计的数据库',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-11 22:21:29'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/me.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/edit/"><i class="fa-fw fas fa-user-edit"></i><span> 我的创作</span></a></div><div class="menus_item"><a class="site-page" href="/aboutme/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-compass"></i><span> 精简导航</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/assets/OpenAI.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小黄同学</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-compass"></i><span> 目录</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/edit/"><i class="fa-fw fas fa-user-edit"></i><span> 我的创作</span></a></div><div class="menus_item"><a class="site-page" href="/aboutme/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-compass"></i><span> 精简导航</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">人工智能设计的数据库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-11T14:17:35.476Z" title="发表于 2023-04-11 22:17:35">2023-04-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-11T14:21:29.274Z" title="更新于 2023-04-11 22:21:29">2023-04-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/javaweb/">javaweb</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="人工智能设计的数据库"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>数据库模型设计</p>
+<p>这是一个家具售后维修管理系统，以下是他需要的功能：<br>1.顾客登录，使用手机号和密码<br>2.企业登录，使用账号和密码<br>3.企业账号可以管理顾客信息<br>4.企业可以录入已售出商品订单（每个商品订单有一张商品图信息）并且可以管理订单<br>5.顾客可以查看已购买商品的订单并且对需要维修售后的商品提交售后申请（售后维修申请能够提交图片详情）<br>6.商家能够处理售后申请，然后反馈给客户解决方案和处理进度<br>7.拥有一个用户疑难解答库，可以查询一些常见问题的处理办法<br>请你给这个系统设计一套成熟的数据库</p>
+<h2 id="GPT4生成答案"><a href="#GPT4生成答案" class="headerlink" title="GPT4生成答案"></a>GPT4生成答案</h2><p>根据您提供的需求，我们可以设计以下数据库表格以妥善实现家具售后维修管理系统的功能：</p>
+<h3 id="1-users-表格：存储用户信息"><a href="#1-users-表格：存储用户信息" class="headerlink" title="1. users 表格：存储用户信息"></a>1. <code>users</code> 表格：存储用户信息</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INT</td>
+<td>用户ID，主键</td>
+</tr>
+<tr>
+<td>username</td>
+<td>VARCHAR</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td>password_hash</td>
+<td>VARCHAR</td>
+<td>密码哈希值</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>VARCHAR</td>
+<td>手机号码</td>
+</tr>
+<tr>
+<td>role</td>
+<td>ENUM(‘customer’, ‘enterprise’)</td>
+<td>用户角色：顾客或企业</td>
+</tr>
+</tbody></table>
+<h3 id="2-enterprise-info-表格：存储企业信息"><a href="#2-enterprise-info-表格：存储企业信息" class="headerlink" title="2. enterprise_info 表格：存储企业信息"></a>2. <code>enterprise_info</code> 表格：存储企业信息</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INT</td>
+<td>企业ID，主键</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>INT</td>
+<td>关联的用户ID，外键</td>
+</tr>
+<tr>
+<td>enterprise_name</td>
+<td>VARCHAR</td>
+<td>企业名称</td>
+</tr>
+<tr>
+<td>address</td>
+<td>VARCHAR</td>
+<td>企业地址</td>
+</tr>
+</tbody></table>
+<h3 id="3-product-orders-表格：存储产品订单信息"><a href="#3-product-orders-表格：存储产品订单信息" class="headerlink" title="3. product_orders 表格：存储产品订单信息"></a>3. <code>product_orders</code> 表格：存储产品订单信息</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INT</td>
+<td>订单ID，主键</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>INT</td>
+<td>顾客ID，外键</td>
+</tr>
+<tr>
+<td>enterprise_id</td>
+<td>INT</td>
+<td>企业ID，外键</td>
+</tr>
+<tr>
+<td>product_name</td>
+<td>VARCHAR</td>
+<td>商品名称</td>
+</tr>
+<tr>
+<td>product_image</td>
+<td>VARCHAR</td>
+<td>商品图片链接</td>
+</tr>
+<tr>
+<td>purchase_date</td>
+<td>DATE</td>
+<td>购买日期</td>
+</tr>
+<tr>
+<td>status</td>
+<td>ENUM(‘ordered’, ‘delivered’, ‘completed’)</td>
+<td>订单状态</td>
+</tr>
+</tbody></table>
+<h3 id="4-aftersales-requests-表格：存储售后维修申请信息"><a href="#4-aftersales-requests-表格：存储售后维修申请信息" class="headerlink" title="4. aftersales_requests 表格：存储售后维修申请信息"></a>4. <code>aftersales_requests</code> 表格：存储售后维修申请信息</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INT</td>
+<td>售后维修申请ID，主键</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>INT</td>
+<td>商品订单ID，外键</td>
+</tr>
+<tr>
+<td>description</td>
+<td>TEXT</td>
+<td>故障描述</td>
+</tr>
+<tr>
+<td>image</td>
+<td>VARCHAR</td>
+<td>故障图片链接</td>
+</tr>
+<tr>
+<td>status</td>
+<td>ENUM(‘pending’, ‘processing’, ‘resolved’, ‘rejected’)</td>
+<td>售后维修申请状态</td>
+</tr>
+</tbody></table>
+<h3 id="5-aftersales-feedbacks-表格：存储售后反馈信息"><a href="#5-aftersales-feedbacks-表格：存储售后反馈信息" class="headerlink" title="5. aftersales_feedbacks 表格：存储售后反馈信息"></a>5. <code>aftersales_feedbacks</code> 表格：存储售后反馈信息</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INT</td>
+<td>售后反馈ID，主键</td>
+</tr>
+<tr>
+<td>request_id</td>
+<td>INT</td>
+<td>售后维修申请ID，外键</td>
+</tr>
+<tr>
+<td>solution</td>
+<td>TEXT</td>
+<td>解决方案</td>
+</tr>
+<tr>
+<td>progress</td>
+<td>ENUM(‘not_started’, ‘in_progress’, ‘completed’)</td>
+<td>处理进度</td>
+</tr>
+</tbody></table>
+<h3 id="6-faq-表格：存储用户疑难解答库信息"><a href="#6-faq-表格：存储用户疑难解答库信息" class="headerlink" title="6. faq 表格：存储用户疑难解答库信息"></a>6. <code>faq</code> 表格：存储用户疑难解答库信息</h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>INT</td>
+<td>FAQ ID，主键</td>
+</tr>
+<tr>
+<td>question</td>
+<td>TEXT</td>
+<td>问题</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>TEXT</td>
+<td>解答</td>
+</tr>
+</tbody></table>
+<p>这套数据库设计能实现您所描述的功能需求。您可以根据实际需求和开发环境对此进行调整。</p>
+<h2 id="BAI-Chat生成答案"><a href="#BAI-Chat生成答案" class="headerlink" title="BAI Chat生成答案"></a>BAI Chat生成答案</h2><p>为了实现以上功能，这个家具售后维修管理系统需要以下的数据表：</p>
+<ol>
+<li>customer表</li>
+</ol>
+<ul>
+<li>id：顾客ID，主键 </li>
+<li>name：用户名，varchar(50)类型</li>
+<li>phone：电话号码，varchar(15)类型</li>
+<li>password：密码，varchar(50)类型</li>
+</ul>
+<ol start="2">
+<li>enterprise_account表</li>
+</ol>
+<ul>
+<li>id：企业账号ID，主键 </li>
+<li>name：企业账号名称，varchar(50)类型</li>
+<li>account：账号，varchar(50)类型</li>
+<li>password：密码，varchar(50)类型</li>
+</ul>
+<ol start="3">
+<li>product_order表</li>
+</ol>
+<ul>
+<li>id：订单ID，主键 </li>
+<li>customer_id：顾客ID，外键关联至customer表，integer类型</li>
+<li>product_id：商品ID，外键关联至product表，integer类型</li>
+<li>order_date：订单日期，datetime类型</li>
+<li>image：商品图片，varchar(255)类型</li>
+<li>status：订单状态，varchar(20)类型</li>
+</ul>
+<ol start="4">
+<li>product表</li>
+</ol>
+<ul>
+<li>id：商品ID，主键 </li>
+<li>name：商品名称，varchar(50)类型</li>
+<li>price：商品价格，Decimal(10, 2)类型</li>
+<li>image：商品图片，varchar(255)类型</li>
+</ul>
+<ol start="5">
+<li>after_sales_application表</li>
+</ol>
+<ul>
+<li>id：售后申请ID，主键 </li>
+<li>customer_id：顾客ID，外键关联至customer表，integer类型</li>
+<li>order_id：订单ID，外键关联至product_order表，integer类型</li>
+<li>product_id：商品ID，外键关联至product表，integer类型</li>
+<li>description：问题描述，text类型</li>
+<li>image：问题图片，varchar(255)类型</li>
+<li>status：售后状态，varchar(20)类型</li>
+</ul>
+<ol start="6">
+<li>user_faq表</li>
+</ol>
+<ul>
+<li>id：问题ID，主键 </li>
+<li>question：问题描述，text类型</li>
+<li>answer：问题解答，text类型</li>
+</ul>
+<p>注：varchar表示可变长度字符串类型，text表示大文本类型，integer表示整数类型，decimal表示定点数类型，datetime表示日期时间类型。</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> <strong>以下是您提供的数据表格的Markdown格式：</strong></li>
+</ul>
+<h3 id="1-customer表"><a href="#1-customer表" class="headerlink" title="1. customer表"></a><strong>1. customer表</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(50)类型</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>varchar(15)类型</td>
+</tr>
+<tr>
+<td>password</td>
+<td>varchar(50)类型</td>
+</tr>
+</tbody></table>
+<h3 id="2-enterprise-account表"><a href="#2-enterprise-account表" class="headerlink" title="2. enterprise_account表"></a><strong>2. enterprise_account表</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(50)类型</td>
+</tr>
+<tr>
+<td>account</td>
+<td>varchar(50)类型</td>
+</tr>
+<tr>
+<td>password</td>
+<td>varchar(50)类型</td>
+</tr>
+</tbody></table>
+<h3 id="3-product-order表"><a href="#3-product-order表" class="headerlink" title="3. product_order表"></a><strong>3. product_order表</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>外键关联至customer表，integer类型</td>
+</tr>
+<tr>
+<td>product_id</td>
+<td>外键关联至product表，integer类型</td>
+</tr>
+<tr>
+<td>order_date</td>
+<td>datetime类型</td>
+</tr>
+<tr>
+<td>image</td>
+<td>varchar(255)类型</td>
+</tr>
+<tr>
+<td>status</td>
+<td>varchar(20)类型</td>
+</tr>
+</tbody></table>
+<h3 id="4-product表"><a href="#4-product表" class="headerlink" title="4. product表"></a><strong>4. product表</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar(50)类型</td>
+</tr>
+<tr>
+<td>price</td>
+<td>Decimal(10, 2)类型</td>
+</tr>
+<tr>
+<td>image</td>
+<td>varchar(255)类型</td>
+</tr>
+</tbody></table>
+<h3 id="5-after-sales-application表"><a href="#5-after-sales-application表" class="headerlink" title="5. after_sales_application表"></a><strong>5. after_sales_application表</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>customer_id</td>
+<td>外键关联至customer表，integer类型</td>
+</tr>
+<tr>
+<td>order_id</td>
+<td>外键关联至product_order表，integer类型</td>
+</tr>
+<tr>
+<td>product_id</td>
+<td>外键关联至product表，integer类型</td>
+</tr>
+<tr>
+<td>description</td>
+<td>text类型</td>
+</tr>
+<tr>
+<td>image</td>
+<td>varchar(255)类型</td>
+</tr>
+<tr>
+<td>status</td>
+<td>varchar(20)类型</td>
+</tr>
+</tbody></table>
+<h3 id="6-user-faq表"><a href="#6-user-faq表" class="headerlink" title="6. user_faq表"></a><strong>6. user_faq表</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>question</td>
+<td>text类型</td>
+</tr>
+<tr>
+<td>answer</td>
+<td>text类型</td>
+</tr>
+</tbody></table>
+<h2 id="最后数据库设计样式"><a href="#最后数据库设计样式" class="headerlink" title="最后数据库设计样式"></a>最后数据库设计样式</h2><h3 id="1-customer表-存储顾客信息"><a href="#1-customer表-存储顾客信息" class="headerlink" title="1. customer表:存储顾客信息"></a><strong>1. customer表:存储顾客信息</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>customer_id</td>
+<td>INT</td>
+<td>顾客ID，主键</td>
+</tr>
+<tr>
+<td>customer_name</td>
+<td>varchar(50)类型</td>
+<td>顾客用户名</td>
+</tr>
+<tr>
+<td>customer_password</td>
+<td>varchar(50)类型</td>
+<td>顾客密码</td>
+</tr>
+<tr>
+<td>customer_phone</td>
+<td>varchar(15)类型</td>
+<td>顾客手机号码</td>
+</tr>
+</tbody></table>
+<h3 id="2-enterprise-account表：存储企业信息"><a href="#2-enterprise-account表：存储企业信息" class="headerlink" title="2. enterprise_account表：存储企业信息"></a><strong>2. enterprise_account表：存储企业信息</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>enterprise_id</td>
+<td>INT</td>
+<td>企业ID，主键</td>
+</tr>
+<tr>
+<td>enterprise_name</td>
+<td>varchar(50)类型</td>
+<td>企业名称</td>
+</tr>
+<tr>
+<td>enterprise_account</td>
+<td>varchar(50)类型</td>
+<td>企业账号</td>
+</tr>
+<tr>
+<td>enterprise_password</td>
+<td>varchar(50)类型</td>
+<td>企业密码</td>
+</tr>
+<tr>
+<td>enterprise_address</td>
+<td>varchar(50)类型</td>
+<td>企业地址</td>
+</tr>
+</tbody></table>
+<h3 id="3-product表：存储产品信息"><a href="#3-product表：存储产品信息" class="headerlink" title="3. product表：存储产品信息"></a><strong>3. product表：存储产品信息</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>product_id</td>
+<td>INT</td>
+<td>产品ID，主键</td>
+</tr>
+<tr>
+<td>product_name</td>
+<td>varchar(50)类型</td>
+<td>产品名称</td>
+</tr>
+<tr>
+<td>product_price</td>
+<td>Decimal(10, 2)类型</td>
+<td>产品价格</td>
+</tr>
+<tr>
+<td>product_details</td>
+<td>varchar(255)类型</td>
+<td>产品描述</td>
+</tr>
+<tr>
+<td>product_image</td>
+<td>varchar(255)类型</td>
+<td>产品图片</td>
+</tr>
+</tbody></table>
+<h3 id="4-product-orders-表格：存储产品订单信息"><a href="#4-product-orders-表格：存储产品订单信息" class="headerlink" title="4. product_orders 表格：存储产品订单信息"></a><strong>4. product_orders 表格：存储产品订单信息</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>orders_id</td>
+<td>INT</td>
+<td>订单ID，主键</td>
+</tr>
+<tr>
+<td>cus_id</td>
+<td>INT</td>
+<td>顾客ID，外键</td>
+</tr>
+<tr>
+<td>ent_id</td>
+<td>INT</td>
+<td>企业ID，外键</td>
+</tr>
+<tr>
+<td>pro_id</td>
+<td>INT</td>
+<td>商品ID，外键</td>
+</tr>
+<tr>
+<td>purchase_date</td>
+<td>DATE</td>
+<td>购买日期</td>
+</tr>
+<tr>
+<td>orders_status</td>
+<td>ENUM[‘ordered(下单)’, ‘delivered(已送达)’, ‘completed(完成)’]</td>
+<td>订单状态</td>
+</tr>
+</tbody></table>
+<h3 id="5-aftersales-requests-表格：存储售后维修申请信息"><a href="#5-aftersales-requests-表格：存储售后维修申请信息" class="headerlink" title="5. aftersales_requests 表格：存储售后维修申请信息"></a><strong>5. aftersales_requests 表格：存储售后维修申请信息</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aftersales_request_id</td>
+<td>INT</td>
+<td>售后维修申请ID，主键</td>
+</tr>
+<tr>
+<td>ord_id</td>
+<td>INT</td>
+<td>商品订单ID，外键</td>
+</tr>
+<tr>
+<td>aftersales_request_description</td>
+<td>TEXT</td>
+<td>故障描述</td>
+</tr>
+<tr>
+<td>aftersales_request_image</td>
+<td>VARCHAR</td>
+<td>故障图片链接</td>
+</tr>
+<tr>
+<td>aftersales_request_status</td>
+<td>ENUM[‘pending(待处理)’,negotiation(协商中), ‘processing(处理中)’, ‘resolved(已解决)’, ‘rejected(已拒绝)’]</td>
+<td>售后维修申请状态</td>
+</tr>
+</tbody></table>
+<h3 id="6-aftersales-feedbacks-表格：存储售后反馈信息"><a href="#6-aftersales-feedbacks-表格：存储售后反馈信息" class="headerlink" title="6. aftersales_feedbacks 表格：存储售后反馈信息"></a><strong>6. aftersales_feedbacks 表格：存储售后反馈信息</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>aftersales_feedback_id</td>
+<td>INT</td>
+<td>售后反馈ID，主键</td>
+</tr>
+<tr>
+<td>aftersales_req_id</td>
+<td>INT</td>
+<td>售后维修申请ID，外键</td>
+</tr>
+<tr>
+<td>aftersales_feedback_solution</td>
+<td>TEXT</td>
+<td>解决方案</td>
+</tr>
+<tr>
+<td>aftersales_feedback_progress</td>
+<td>ENUM[‘not_started(未开始)’, ‘in_progress(进行中)’, ‘completed(已解决)’]</td>
+<td>处理进度</td>
+</tr>
+</tbody></table>
+<h3 id="7-faq-表格：存储用户疑难解答库信息"><a href="#7-faq-表格：存储用户疑难解答库信息" class="headerlink" title="7. faq 表格：存储用户疑难解答库信息"></a><strong>7. faq 表格：存储用户疑难解答库信息</strong></h3><table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>数据类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>faq_id</td>
+<td>INT</td>
+<td>FAQ ID，主键</td>
+</tr>
+<tr>
+<td>faq_question</td>
+<td>TEXT</td>
+<td>问题</td>
+</tr>
+<tr>
+<td>faq_answer</td>
+<td>TEXT</td>
+<td>解答</td>
+</tr>
+</tbody></table>
+<h2 id="不得不说，GPT4是真的厉害"><a href="#不得不说，GPT4是真的厉害" class="headerlink" title="不得不说，GPT4是真的厉害"></a>不得不说，GPT4是真的厉害</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.hxiyc.top">小黄同学</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.hxiyc.top/2023/04/11/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/">https://www.hxiyc.top/2023/04/11/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.hxiyc.top" target="_blank">小黄同学</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQL/">SQL</a><a class="post-meta__tags" href="/tags/ChatGPT/">ChatGPT</a><a class="post-meta__tags" href="/tags/OpenAI/">OpenAI</a></div><div class="post_share"><div class="social-share" data-image="/assets/OpenAI.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/20/SpringMVC_day01/"><img class="next-cover" src="/assets/spring.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SpringMVC学习_01</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/19/SQL%E6%A6%82%E5%BF%B5/" title="数据库相关概念"><img class="cover" src="/assets/sql.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-19</div><div class="title">数据库相关概念</div></div></a></div><div><a href="/2022/06/19/SQL%E5%AD%A6%E4%B9%A0/" title="SQL学习"><img class="cover" src="/assets/sql.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-19</div><div class="title">SQL学习</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/me.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小黄同学</div><div class="author-info__description">爱吃薯条的小黄同学</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Fan-Xiao"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">热烈庆祝本站建成！！！🎇<div><iframe src="https://fan-xiao.github.io/3dgo" width="100%" height="350px" frameborder="0">您的浏览器不支持iframe，请升级</iframe></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GPT4%E7%94%9F%E6%88%90%E7%AD%94%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">GPT4生成答案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-users-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">1.1.</span> <span class="toc-text">1. users 表格：存储用户信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-enterprise-info-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E4%BC%81%E4%B8%9A%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.</span> <span class="toc-text">2. enterprise_info 表格：存储企业信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-product-orders-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E4%BA%A7%E5%93%81%E8%AE%A2%E5%8D%95%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.</span> <span class="toc-text">3. product_orders 表格：存储产品订单信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-aftersales-requests-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E5%94%AE%E5%90%8E%E7%BB%B4%E4%BF%AE%E7%94%B3%E8%AF%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.</span> <span class="toc-text">4. aftersales_requests 表格：存储售后维修申请信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-aftersales-feedbacks-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E5%94%AE%E5%90%8E%E5%8F%8D%E9%A6%88%E4%BF%A1%E6%81%AF"><span class="toc-number">1.5.</span> <span class="toc-text">5. aftersales_feedbacks 表格：存储售后反馈信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-faq-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E7%94%A8%E6%88%B7%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.</span> <span class="toc-text">6. faq 表格：存储用户疑难解答库信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BAI-Chat%E7%94%9F%E6%88%90%E7%AD%94%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">BAI Chat生成答案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-customer%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">1. customer表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-enterprise-account%E8%A1%A8"><span class="toc-number">2.2.</span> <span class="toc-text">2. enterprise_account表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-product-order%E8%A1%A8"><span class="toc-number">2.3.</span> <span class="toc-text">3. product_order表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-product%E8%A1%A8"><span class="toc-number">2.4.</span> <span class="toc-text">4. product表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-after-sales-application%E8%A1%A8"><span class="toc-number">2.5.</span> <span class="toc-text">5. after_sales_application表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-user-faq%E8%A1%A8"><span class="toc-number">2.6.</span> <span class="toc-text">6. user_faq表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%A0%B7%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">最后数据库设计样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-customer%E8%A1%A8-%E5%AD%98%E5%82%A8%E9%A1%BE%E5%AE%A2%E4%BF%A1%E6%81%AF"><span class="toc-number">3.1.</span> <span class="toc-text">1. customer表:存储顾客信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-enterprise-account%E8%A1%A8%EF%BC%9A%E5%AD%98%E5%82%A8%E4%BC%81%E4%B8%9A%E4%BF%A1%E6%81%AF"><span class="toc-number">3.2.</span> <span class="toc-text">2. enterprise_account表：存储企业信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-product%E8%A1%A8%EF%BC%9A%E5%AD%98%E5%82%A8%E4%BA%A7%E5%93%81%E4%BF%A1%E6%81%AF"><span class="toc-number">3.3.</span> <span class="toc-text">3. product表：存储产品信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-product-orders-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E4%BA%A7%E5%93%81%E8%AE%A2%E5%8D%95%E4%BF%A1%E6%81%AF"><span class="toc-number">3.4.</span> <span class="toc-text">4. product_orders 表格：存储产品订单信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-aftersales-requests-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E5%94%AE%E5%90%8E%E7%BB%B4%E4%BF%AE%E7%94%B3%E8%AF%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">3.5.</span> <span class="toc-text">5. aftersales_requests 表格：存储售后维修申请信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-aftersales-feedbacks-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E5%94%AE%E5%90%8E%E5%8F%8D%E9%A6%88%E4%BF%A1%E6%81%AF"><span class="toc-number">3.6.</span> <span class="toc-text">6. aftersales_feedbacks 表格：存储售后反馈信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-faq-%E8%A1%A8%E6%A0%BC%EF%BC%9A%E5%AD%98%E5%82%A8%E7%94%A8%E6%88%B7%E7%96%91%E9%9A%BE%E8%A7%A3%E7%AD%94%E5%BA%93%E4%BF%A1%E6%81%AF"><span class="toc-number">3.7.</span> <span class="toc-text">7. faq 表格：存储用户疑难解答库信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%BE%97%E4%B8%8D%E8%AF%B4%EF%BC%8CGPT4%E6%98%AF%E7%9C%9F%E7%9A%84%E5%8E%89%E5%AE%B3"><span class="toc-number">4.</span> <span class="toc-text">不得不说，GPT4是真的厉害</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/11/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/" title="人工智能设计的数据库"><img src="/assets/OpenAI.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="人工智能设计的数据库"/></a><div class="content"><a class="title" href="/2023/04/11/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93/" title="人工智能设计的数据库">人工智能设计的数据库</a><time datetime="2023-04-11T14:17:35.476Z" title="发表于 2023-04-11 22:17:35">2023-04-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/20/SpringMVC_day01/" title="SpringMVC学习_01"><img src="/assets/spring.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC学习_01"/></a><div class="content"><a class="title" href="/2022/07/20/SpringMVC_day01/" title="SpringMVC学习_01">SpringMVC学习_01</a><time datetime="2022-07-20T06:13:08.436Z" title="发表于 2022-07-20 14:13:08">2022-07-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/13/Spring_day03/" title="Spring学习_03"><img src="/assets/spring.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring学习_03"/></a><div class="content"><a class="title" href="/2022/07/13/Spring_day03/" title="Spring学习_03">Spring学习_03</a><time datetime="2022-07-13T04:27:49.562Z" title="发表于 2022-07-13 12:27:49">2022-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/13/Mybatis/" title="Mybatis"><img src="/assets/mybatis.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis"/></a><div class="content"><a class="title" href="/2022/07/13/Mybatis/" title="Mybatis">Mybatis</a><time datetime="2022-07-13T04:19:22.503Z" title="发表于 2022-07-13 12:19:22">2022-07-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/13/Spring_day02/" title="Spring学习_02"><img src="/assets/spring.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring学习_02"/></a><div class="content"><a class="title" href="/2022/07/13/Spring_day02/" title="Spring学习_02">Spring学习_02</a><time datetime="2022-07-13T02:39:41.560Z" title="发表于 2022-07-13 10:39:41">2022-07-13</time></div></div></div></div></div></div></main><footer id="footer" style="background: rgb(0,0,255,0.3)"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 小黄同学</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">嗨！欢迎朋友</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadWaline () {
+  function insertCSS () {
+    const link = document.createElement("link")
+    link.rel = "stylesheet"
+    link.href = "https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.css"
+    document.head.appendChild(link)
+  }
+
+  function initWaline () {
+    const waline = Waline.init(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'https://waline-test-h0vk3ka6w-fan-xiao.vercel.app/',
+      pageview: false,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+    }, null))
+  }
+
+  if (typeof Waline === 'function') initWaline()
+  else {
+    insertCSS()
+    getScript('https://cdn.jsdelivr.net/npm/@waline/client/dist/waline.js').then(initWaline)
+  }
+}
+
+if ('Waline' === 'Waline' || !true) {
+  if (true) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+  else setTimeout(loadWaline, 0)
+} else {
+  function loadOtherComment () {
+    loadWaline()
+  }
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
